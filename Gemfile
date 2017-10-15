@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 gem 'data_mapper'
 gem 'sinatra'
 gem 'sinatra-contrib'
