@@ -10,10 +10,11 @@ cache = ActiveSupport::Cache.lookup_store(:file_store, '/tmp/cache')
 
 
 time = Time.now
-urls = ['https://www.tabaklaedeli.ch', 'https://www.smoke24.ch', 'wrong.ghj', 'https://expired.badssl.com/', 'https://cacert.org/']
+
+urls = Url.all.map{|url| url.url}
 urls.each do |url|
   time = Time.now
-  db=Url.first_or_create(url: url)
+  db=Url.first(url: url)
 
   begin
     page = MetaInspector.new(url, connection_timeout: 5, read_timeout: 1, retries: 3, faraday_http_cache: { store: cache }) # , faraday_options: { ssl: { verify: false } }
