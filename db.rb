@@ -1,7 +1,7 @@
 require 'data_mapper' # requires all the gems listed above
 require 'dm-migrations'
 DataMapper::Logger.new($stdout, :info)
-DataMapper.setup(:default, "sqlite://#{Dir.pwd}/project.db")
+DataMapper.setup(:default, "mysql://i0fiqs6jmrrc9eor:w8sbevwyv3lcmf2r@zpj83vpaccjer3ah.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/cgfnpubzgrj4gtj1")
 
 class Url
     include DataMapper::Resource
