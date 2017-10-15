@@ -31,7 +31,7 @@ get '/oauth2callback' do
   # intelligently try and parse the response.body
   p @email = access_token.get('https://www.googleapis.com/userinfo/email?alt=json').parsed
 
-  if @email['data']['isVerified'] && @email['data']['email'] == 'nicolas.roitero@gmail.com'
+  if @email['data']['isVerified'] &&  (['nicolas.roitero@gmail.com','siravecavec@gmail.com'].include? @email['data']['email'] )
     session[:user] = @email['data']['email']
     redirect '/admin'
   else
