@@ -22,7 +22,7 @@
 Last check:  <%=url.update_at.strftime("%m-%e-%y %H:%M")%>
   <%else%>
 <div class="panel panel-danger">
-  <div class="panel-heading"><h4><%=url.url%></h4></div>
+  <div class="panel-heading"><h4><a target="_blank" href="<%=url.url%>"><%=url.url%></a></h4></div>
   <div class="panel-body">
   
 Error:  <%=url.message%>
