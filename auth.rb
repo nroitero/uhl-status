@@ -12,11 +12,20 @@ end
 
 def connected?
   redirect '/auth' if session[:user].nil?
+session[:user][/^(.*?)@/,1]
+  
 end
 
 before do
-  connected? unless ['/', '/auth', '/oauth2callback'].include? request.path
+ @user= connected? unless ['/', '/auth', '/oauth2callback'].include? request.path
 end
+
+get '/logout' do
+  session.clear
+redirect '/'
+end
+
+
 get '/auth' do
   redirect client.auth_code.authorize_url(redirect_uri: redirect_uri, scope: SCOPES, access_type: 'offline')
 end
